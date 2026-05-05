@@ -13,6 +13,6 @@ public interface ClienteDaoInterface {
 
     void atualizar(Cliente cliente);
 
-    void deltar(String cpf);
+    void deletar(String cpf);
 
 }
