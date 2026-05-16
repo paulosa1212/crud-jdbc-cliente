@@ -4,6 +4,8 @@ import entity.Cliente;
 import entity.Endereco;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,8 +14,9 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         ClienteDaoInterface clienteDao = new ClienteDao();
-
+        DateTimeFormatter fmt=DateTimeFormatter.ofPattern("dd/MM/yyyy");
         int opcao;
+
 
         do {
             System.out.println("\n==== MENU ====");
@@ -73,8 +76,8 @@ public class Main {
                     System.out.print("CPF: ");
                     novo.setCpf(sc.nextLine());
 
-                    System.out.print("Data nascimento (YYYY-MM-DD): ");
-                    novo.setDataNascimento(LocalDate.parse(sc.nextLine()));
+                    System.out.print("Data nascimento (dd/mm/yyyy): ");
+                    novo.setDataNascimento(LocalDate.parse(sc.nextLine().replace(" ","/"),fmt));
 
                     System.out.print("Tem endereço? (s/n): ");
                     String temEndereco = sc.nextLine();
@@ -139,4 +142,5 @@ public class Main {
 
         sc.close();
     }
+
 }
